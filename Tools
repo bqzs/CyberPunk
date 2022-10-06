@@ -1,0 +1,40 @@
+***************************************************************************************************************
+
+
+
+                 Describes tools and other wordlists that are usefull for pentest
+
+
+
+***************************************************************************************************************
+
+
+
+
+Feroxbuster : Can be used for subdomain enumeration and directory scanning.
+
+               git clone https://github.com/nirsarkar/feroxbuster.git
+
+SecLists   : A very usefull wordlist with modern injection payloads and many other discovery wordlists.
+ 			
+ 				git clone https://github.com/danielmiessler/SecLists.git
+
+HiddenEye  : A Phishing attack tool but can be used for social engenirng.
+ 
+                 git clone https://github.com/Morsmalleo/HiddenEye.git
+
+Burpsuite  : Burpsiute is a application testing software. The class-leading vulnerability scanning, penetration testing, and web app security platform. Burpsuite is pre-installed in 	
+				kali linux.
+				https://portswigger.net/burp
+
+Nmap       : Nmap ("Network Mapper") is a free and open source utility for network discovery and security auditing.Nmap is pre-installed in kali linux.Nmap contains many usefull 					scripts.
+
+Scripts : There are some publicly available scripts that can be used to find the vulnerabilties inside a server
+
+			Docker : git clone https://github.com/stealthcopter/deepce.git
+
+			Linux machine : https://github.com/carlospolop/PEASS-ng/releases
+
+			Windows machine : https://github.com/carlospolop/PEASS-ng/releases
+
+			
