@@ -122,6 +122,10 @@ while chehcking through the source code we find another endpoint named `admin_ti
 ```
 
 `/esclate` we can submit some issues regarding the box so we utilized thoses page to do our next step.
+![](/forgot/img/1.png)
+
+
+![[1.png]]
 
 ![[1.png]]
 
