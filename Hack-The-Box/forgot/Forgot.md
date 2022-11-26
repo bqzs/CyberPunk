@@ -127,11 +127,11 @@ while chehcking through the source code we find another endpoint named `admin_ti
 
 In the link box when we tried the payload `http://ourip` we got a flagged error message
 
-![[2.png]]
+![](/Hack-The-Box/forgot/img/2.png)
 
 so trieng to bypass that we changed the schema grom `http` to `HTtp` , which successfully bypassed the flagging
 
-![[3.png]]
+![](/Hack-The-Box/forgot/img/3.png)
 Now we need to check for callback for that setup a python server and send the request
 ```┌──(kali㉿kali)-[~/workspace/HTB/machine/forgot]
 └─$ python3 -m http.server 80
@@ -144,7 +144,7 @@ now we got the callback.
 
 Now we need to check the callback headers for checking their is any session cookies. FOr that we setup a netcat listner on port 80 and wait for that call back...
 
-![[4.png]]
+![](/Hack-The-Box/forgot/img/4.png)
 
 successfully we got cookie...
 
