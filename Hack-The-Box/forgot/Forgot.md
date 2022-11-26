@@ -122,11 +122,8 @@ while chehcking through the source code we find another endpoint named `admin_ti
 ```
 
 `/esclate` we can submit some issues regarding the box so we utilized thoses page to do our next step.
-![](/forgot/img/1.png)
-![](/forgot/img/1.png)
 
-
-![[/forgot/img/1.png]]
+![](/Hack-The-Box/forgot/img/1.png)
 
 In the link box when we tried the payload `http://ourip` we got a flagged error message
 
