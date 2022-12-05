@@ -4,17 +4,16 @@
 
 we start with inital nmap scan  `nmap -A -F IP`  and founf two open ports  `22` and  `80` . 
 The target page looks like this
-![](/Hack-The-Box/Precious/img/1.png
-![](/Hack-THe-Box/Precious/img/1.png)
+![](/Hack-The-Box/Precious/img/1.png)
 
 Using  `Feroxbuster`  and  `wfuzz`  for hidden directry scan and subdomain enumeration but we got nothing usefull.
 
 Going back to the web page, when we enterd a specific url in submit button it shows a flagged error 
 `http://1p`
-![](/Hack-The-Box/Precious/img/2.png
+![](/Hack-The-Box/Precious/img/2.png)
 
 But trying the payload like this  `hTtp://IP` we just got the  `url`   printed as  `pdf`.
-![](/Hack-The-Box/Precious/img/3.png
+![](/Hack-The-Box/Precious/img/3.png)
 
 while chehcking about the pdf generator we found its generated through `PDFKit v 0.8.2`
 After some reconnasence about PDFkit we founf this specific version is vulnerable to command injection `CVE-2022-25765`
