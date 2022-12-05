@@ -6,9 +6,9 @@ we start with inital nmap scan  `nmap -A -F IP`  and founf two open ports  `22` 
 The target page looks like this
 ![](/Hack-The-Box/Precious/img/1.png)
 
-Using  `Feroxbuster`  and  `wfuzz`  for hidden directry scan and subdomain enumeration but we got nothing usefull.
+Using  `Feroxbuster`  and  `wfuzz`  for hidden directry scan and subdomain enumeration but we got nothing useful.
 
-Going back to the web page, when we enterd a specific url in submit button it shows a flagged error 
+Going back to the web page, when we entered a specific url in submit button it shows a flagged error 
 `http://1p`
 ![](/Hack-The-Box/Precious/img/2.png)
 
@@ -51,10 +51,10 @@ ruby:x:1001:1001::/home/ruby:/bin/bash
 ```
 
 So we need to do vertical Privilege esclation.
-While going through `/home` dir of `ruby` we found a dir namde `.bundle` . Readong the config file iniside the directory we found the creds for henry user.
+While going through `/home` dir of `ruby` we found a dir namded `.bundle` . Reading the config file iniside the directory we found the creds for henry user.
 
 ### Root
-User henry have sudo  so by running `sudo -l` we found something intersting
+User henry have sudo  so by running `sudo -l` we found something interesting
 ```shell
 -bash-5.1$ sudo -l
 Matching Defaults entries for henry on precious:
@@ -96,40 +96,9 @@ gems_file.each do |file_name, file_version|
         end
     end
 end
-root@precious:/home/henry# cat /opt/up
-cat /opt/update_dependencies.rb 
-# Compare installed dependencies with those specified in "dependencies.yml"
-require "yaml"
-require 'rubygems'
-
-# TODO: update versions automatically
-def update_gems()
-end
-
-def list_from_file
-    YAML.load(File.read("dependencies.yml"))
-end
-
-def list_local_gems
-    Gem::Specification.sort_by{ |g| [g.name.downcase, g.version] }.map{|g| [g.name, g.version.to_s]}
-end
-
-gems_file = list_from_file
-gems_local = list_local_gems
-
-gems_file.each do |file_name, file_version|
-    gems_local.each do |local_name, local_version|
-        if(file_name == local_name)
-            if(file_version != local_version)
-                puts "Installed version differs from the one specified in file: " + local_name
-            else
-                puts "Installed version is equals to the one specified in file: " + local_name
-            end
-        end
-    end
-end
 ```
- So using the following references we crafted a deserialization payload and expoit it.
+
+ So using the following references we crafted a deserialization payload and exploit it.
  ```
  https://blog.stratumsecurity.com/2021/06/09/blind-remote-code-execution-through-yaml-deserialization/
 
