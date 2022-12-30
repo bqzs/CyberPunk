@@ -182,12 +182,15 @@ Now we are able to acesss the database
 
 we were able to carck service_acc hash password `123meunomeeivani`
 
-while running `linepeas` we found `snmpd.conf` file.
+while running `linepeas` we found `snmpd.conf` file.These file usually contains sensitive credentials or information
+
 ![](/Hack-The-Box/Mentor/img/16.png)
 
 there is our password
+
 ![](/Hack-The-Box/Mentor/img/17.png)
 
+Now we are able to loginas user `james`. User james have the privilege to run `/bin/sh` as sudo user,which help us to gain root privilegs.
 
 
 ![](/Hack-The-Box/Mentor/img/18.png)
