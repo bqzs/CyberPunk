@@ -190,7 +190,7 @@ there is our password
 
 ![](/Hack-The-Box/Mentor/img/17.png)
 
-Now we are able to loginas user `james`. User james have the privilege to run `/bin/sh` as sudo user,which help us to gain root privilegs.
+Now we are able to login as user `james`. User james have the privilege to run `/bin/sh` as sudo user,which help us to gain root privilegs.
 
 
 ![](/Hack-The-Box/Mentor/img/18.png)
