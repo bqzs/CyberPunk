@@ -20,7 +20,8 @@ PORT      STATE  SERVICE
 Nmap done: 1 IP address (1 host up) scanned in 1.13 seconds
 ```
 Changing the host nmae to `mentorquotes.htb`, giving as a webpage with some motivation quotes.
-![](/Hack-The-Box/Precious/img/1.png
+![](/Hack-The-Box/Precious/img/1.png)
+
 
 We used `feroxbuster` for hidden directory scan andgot nothing intresting, so we gone for sub-domain enumeration usung `wfuzz` and found a domain named `api`
 ```shell
@@ -41,7 +42,7 @@ ID           Response   Lines    Word       Chars       Payload
 000000077:   404        0 L      2 W        22 Ch       "api"          
 ```
  the page shows nothing intresting 
- ![](/Hack-The-Box/Precious/img/2.png
+ ![](/Hack-The-Box/Precious/img/2.png)
 
 so we did content discovery using `wfuzz` and found something intresting
 ```shell
@@ -66,7 +67,7 @@ ID           Response   Lines    Word       Chars       Payload
 000003781:   403        9 L      28 W       285 Ch      "server-status"            
 ```
 
- ![](/Hack-The-Box/Precious/img/3.png
+ ![](/Hack-The-Box/Precious/img/3.png)
 
 since `snmp`  port is open we are brute forcing community string using `nmap`
 we found two stirings named `public and internal` so using `snmpwalk ` we do some basic enumerations and found a intresting password from `internal` 
@@ -74,42 +75,42 @@ we found two stirings named `public and internal` so using `snmpwalk ` we do som
 
 Let’s try to sign up for a new account using the email address `james@mentorquotes.htb`
 
- ![](/Hack-The-Box/Precious/img/5.png
+ ![](/Hack-The-Box/Precious/img/5.png)
 
 The sign-up process did not work using the email address that we found. Let’s try using a different email address instead.
 
-![](/Hack-The-Box/Precious/img/6.png
+![](/Hack-The-Box/Precious/img/6.png)
  
 Now that we have created a new account, let’s try using the login function to access it
 
-![](/Hack-The-Box/Precious/img/7.png
+![](/Hack-The-Box/Precious/img/7.png)
 
 Upon successful login, the login function provided us with a JWT (JSON Web Token), which we can use to authenticate future requests to the website.
 We are using this JWT to access `GET /users` along with  `Authorization` header
 
-![](/Hack-The-Box/Precious/img/8.png
+![](/Hack-The-Box/Precious/img/8.png)
 
 We received a response stating that only an administrator can access this resource.So from `snmpwalk` we found a password using that password we tried to login and get a valid JWT.
 
-![](/Hack-The-Box/Precious/img/9.png
+![](/Hack-The-Box/Precious/img/9.png)
 
 let’s try the function using the new JWT to see if we have the necessary permissions.
 
-![](/Hack-The-Box/Precious/img/10.png
+![](/Hack-The-Box/Precious/img/10.png)
 we were able to successfully run the ‘get users’ function and retrieve the list of users.
 
 let’s check the contents of the ‘admin’ directory.
-![](/Hack-The-Box/Precious/img/11.png
+![](/Hack-The-Box/Precious/img/11.png)
 
 `/check` was not implemented yet and changing the method of `/backup` gives a response
-![](/Hack-The-Box/Precious/img/12.png
+![](/Hack-The-Box/Precious/img/12.png)
 
 since api is more verbose we add some wrong parametrs to find the orginal response 
 
-![](/Hack-The-Box/Precious/img/13.png
+![](/Hack-The-Box/Precious/img/13.png)
 
 now we try to create our revershell payload.
-![](/Hack-The-Box/Precious/img/14.png
+![](/Hack-The-Box/Precious/img/14.png)
 
 we get shell as root 
 ```shell
@@ -177,20 +178,20 @@ Use  Chisel to create a tunnel to our machine and use the credentials that we fo
 Now we are able to acesss the database
 `psql -h 127.0.0.1 -p 5432 -d mentorquotes_db -U postgres`
 
-![](/Hack-The-Box/Precious/img/15.png
+![](/Hack-The-Box/Precious/img/15.png)
 
 we were able to carck service_acc hash password `123meunomeeivani`
 
 while running `linepeas` we found `snmpd.conf` file.
-![](/Hack-The-Box/Precious/img/16.png
+![](/Hack-The-Box/Precious/img/16.png)
 
 there is our password
-![](/Hack-The-Box/Precious/img/17.png
+![](/Hack-The-Box/Precious/img/17.png)
 
 
 
-![](/Hack-The-Box/Precious/img/18.png
+![](/Hack-The-Box/Precious/img/18.png)
 
 
 
-![](/Hack-The-Box/Precious/img/19.png
+![](/Hack-The-Box/Precious/img/19.png)
