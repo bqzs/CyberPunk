@@ -15,7 +15,7 @@ PORT     STATE    SERVICE
 57843/udp closed unknown
 ```
 
-![](/Hack-The-Box/soccer/img/1.png
+![](/Hack-The-Box/soccer/img/1.png)
 
 During directory scanning we found some endpoints where one is a login page to `tiny file mnager` and the second one is a upload page which is forbidden
 ```shell
@@ -23,17 +23,17 @@ During directory scanning we found some endpoints where one is a login page to `
 301      GET        7l       12w      178c http://soccer.htb/tiny => http://soccer.htb/tiny/
 301      GET        7l       12w      178c http://soccer.htb/tiny/uploads => http://soccer.htb/tiny/uploads/
 ```
-![](/Hack-The-Box/Mentor/img/2.png
+![](/Hack-The-Box/Mentor/img/2.png)
 
 So by using the defaults credentials from github page; we successfully login and found a upload function. so navigating to `/tiny/uploads` and uploaded our revshell payload and recived a shell as `www-data`
 
 SInce the site is running on `nginx` we just navigate to `/etc/nginx/site-availabes` and found a subdomain running on the server
-![](/Hack-The-Box/Mentor/img/3.png
+![](/Hack-The-Box/Mentor/img/3.png)
 
-![](/Hack-The-Box/Mentor/img/4.png
+![](/Hack-The-Box/Mentor/img/4.png)
 
 we signin  and login to the account a found a page to check our tickets. 
-![](/Hack-The-Box/Mentor/img/5.png
+![](/Hack-The-Box/Mentor/img/5.png)
 
 while checking the html source page we found a websocket connection running on the subdomain
 ```html
@@ -146,8 +146,8 @@ upload the file to our target machine using `wget`
 copy the file into `/usr/local/share/dstat` and change the permission of the file
 check whether our malcious plugin have been loaded
 ` doas /usr/bin/dstat --list`
-![](/Hack-The-Box/Mentor/img/6.png
+![](/Hack-The-Box/Mentor/img/6.png)
 
 Open a netcat lisner and execute the following command
 `doas -u root /usr/bin/dstat --bq`
-![](/Hack-The-Box/Mentor/img/6.png
+![](/Hack-The-Box/Mentor/img/7.png)
