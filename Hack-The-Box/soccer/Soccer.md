@@ -23,7 +23,7 @@ During directory scanning we found some endpoints where one is a login page to `
 301      GET        7l       12w      178c http://soccer.htb/tiny => http://soccer.htb/tiny/
 301      GET        7l       12w      178c http://soccer.htb/tiny/uploads => http://soccer.htb/tiny/uploads/
 ```
-![](/Hack-The-Box/Mentor/img/2.png)
+![](/Hack-The-Box/soccer/img/2.png)
 
 So by using the defaults credentials from github page; we successfully login and found a upload function. so navigating to `/tiny/uploads` and uploaded our revshell payload and recived a shell as `www-data`
 
