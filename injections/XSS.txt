@@ -102,3 +102,7 @@ function handleResponse() {
 
 
 XSS special cheat sheets and payloads-- https://portswigger.net/web-security/cross-site-scripting/cheat-sheet
+
+
+#TO CHANGE A HEADING
+<script>document.querySelector('title').textContent = 'I am a hacker'</script>
