@@ -26,4 +26,11 @@ Get-Command | Get-Member -MemberType Method
 Get-ChildItem | Select-Object -Property Mode, Name = listing the directories and just selecting the mode and the name
 Get-Service | Where-Object -Property Status -eq Stopped = filter objects
 Get-ChildItem | Sort-Object = sort object
+Get-ChildItem -Path C:\ -Include *interesting-file.txt* -File -Recurse -ErrorAction SilentlyContinue = to find a file
+Get-Content "C:\Program Files\interesting-file.txt.txt" = to read a file
+Get-Command | Where-Object -Parameter CommandType -eq Cmdlet | measure = to find home many cmdlets
+Get-FileHash -Path "C:\Program Files\interesting-file.txt.txt" -Algorithm MD5 = to get hash of a file 
+Get-Location = pwd
+Get-Location -Path "C:\Users\Administrator\Documents\Passwords" = to check a path exists or not 
+Invoke-WebRequest= command to make a request to web server 
 
