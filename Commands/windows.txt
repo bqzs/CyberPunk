@@ -34,3 +34,22 @@ Get-Location = pwd
 Get-Location -Path "C:\Users\Administrator\Documents\Passwords" = to check a path exists or not 
 Invoke-WebRequest= command to make a request to web server 
 
+
+******************************
+
+    ENUMERATION
+
+******************************
+
+Get-LocalUser = find the users
+Get-LocalUser -SID "S-1-5-21-1394777289-3961777894-1791813945-501" = find the userid
+Get-LocalUser | Where-Object -Property PasswordRequired -Match false = users have their password required values set to False
+Get-LocalGroup | measure = local groups count
+Get-NetIPAddress = to get ipaddress info
+GEt-NetTCPConnection | Where-Object -Property State -Match Listen | measure = to measure number of ports listnening
+GEt-NetTCPConnection | Where-Object -Property State -Match Listen =  to find remote address
+Get-Hotfix | measure =  to findnumber of patches
+Get-Hotfix -Id KB4023834 =  to find  a particular patch
+Get-ChildItem C:\* -Recurse | Select-String -pattern API_KEY =  to search files with specifc key
+Get-Process = to list all process
+
