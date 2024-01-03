@@ -1,0 +1,47 @@
+tmux  // to start tmux terminal
+ctrl+b + d // to detach from a session
+tmux a // to reattach to the latest detached session
+tmux a -t [index or name] // to reattach to any session
+tmux new -s xyz // to name create a new tmux session with name xyz
+tmux ls // to list all current tmux sessions
+tmux kill-session //  to kill the latest tmux session
+tmux kill-session -t [name]// to kill a specific sesison
+tmux kill-server // kill all the session sat once
+
+ctrl+b + %  //divide the pane horizontally
+ctrl+b + "  //divide the pane vertically/.
+ctrl+b + arrows //to move around the diff panes
+ctrl+b + q // to show index of diff panes
+ctrl+b + ctrl+arrows // change the sixe of the pane
+ctrl+b + alt 1/2/3/4/5 //to select a pre-defined layout
+ctrl+b + c //to create a new window
+ctrl+b + n //to move sequentially around diff windows
+ctrl+b + , // to rename a window
+ctrl+b + w // shows a tree of entire a tmux sessions and windows
+ctrl+b + x // kill a pane
+ctrl+b + & //kill entire window
+
+copy mode
+
+ctrl+b + [ 
+move to the point where u want to start copy 
+hit space move using aroows to select the data to copy
+hit enter to stop and 
+ctrlb + ]  to paste 
+
+// config to be done!!
+
+nano  ~/.tmux.conf
+
+set -g mouse on
+setw -g mode-keys vi
+
+
+
+
+
+
+
+
+
+
