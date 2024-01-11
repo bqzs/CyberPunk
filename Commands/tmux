@@ -25,7 +25,7 @@ copy mode
 
 ctrl+b + [ 
 move to the point where u want to start copy 
-hit space move using aroows to select the data to copy
+hit space move using arrows to select the data to copy
 hit enter to stop and 
 ctrlb + ]  to paste 
 
@@ -36,6 +36,19 @@ nano  ~/.tmux.conf
 set -g mouse on
 setw -g mode-keys vi
 
+//copy from tmux terminal to system clipboard
+
+*install xclip tool
+
+*sudo apt-get install xclip
+
+
+to copy : ctrl+b , [ 
+move to the point where u want to start copy
+hit space move using arrows to select the data to copy
+hit enter to stop // now the data is copied in tmux termianl
+
+tmux show-buffer | xclip -selection clipboard // run the command in the same tmux terminal
 
 
 

@@ -145,3 +145,24 @@ wget https://site.com | grep "< a href=\"http" | grep "site.com"
             tcpdump -s 0 -v -n -l|egrep -I “POST /|GET /|Host:”
 
 users in /etc/passwd : cat filename | grep bash
+
+passive recon
+
+server to use (optional)
+
+google : 8.8.8.8
+google : 8.8.4.4
+cloudflare : 1.1.1.1
+cloudflare : 1.0.0.1
+Quad9  : 9.9.9.9
+Quad9  : 149.112.112.112
+
+
+A	IPv4 Addresses
+AAAA	IPv6 Addresses
+CNAME	Canonical Name
+MX	Mail Servers
+SOA	Start of Authority
+TXT	TXT Records
+
+
