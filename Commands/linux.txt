@@ -23,8 +23,13 @@ wget https://site.com | grep "< a href=\"http" | grep "site.com"
        nmap –script vuln (vuln scripts)
        nmap --script=ssl-enum-ciphers
        namp -sn (host)
-
-
+       nmap -sL (TO LIST NUMBER OF IP GETTING SCANNED)
+   
+prvilaged users to scan tare=gets outside the local network namp uses:
+									ICMP echo
+									TCP ACK to port 80
+									TCP SYN to port 443
+									ICMP timestamp request
 #dowl a file 
        wget http://ip/filename
        curl http://ip/filname.sh
