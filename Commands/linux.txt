@@ -14,22 +14,38 @@ wget https://site.com | grep "< a href=\"http" | grep "site.com"
        nmap -V #version
        nmap -PA (tcp packets) -sT (tcp port)
        nmap -PU (udp packets) -sU(udp port)
-       nmap -PE (icmp packets)
-       namp -sn -PE (icmp host)
+       nmap -PE (icmp echo scan)
+       nmap -PP (icmp timestamp scan)
+       nmap -PM (icmp address mask scan)
        nmap -f (invade firewall)
        nmap -A (aggressive )
        namp -p 1- 100 (specified range)
        nNmap -sC (script in the web)
        nmap –script vuln (vuln scripts)
        nmap --script=ssl-enum-ciphers
-       namp -sn (host)
+       namp -sn (to dicover host wir=thout scanning )
        nmap -sL (TO LIST NUMBER OF IP GETTING SCANNED)
-   
-prvilaged users to scan tare=gets outside the local network namp uses:
+       nmap -PS  (TCP SYN SCAN)
+       nmap -PS21 (TCP SYN SCAN with specific port)
+       nmap -PA   (TCP ACK scan)
+       nmap -PA21 (TCP ACK scan with specific port)
+       nmap -PU (UDP scan)   
+       nmap -sT // tcp connect scan
+
+reverse-DNS lookup
+       namp -n //to skip
+       nmap -R //query DNS server to look for offline hosts
+       namp --dns-servers //for specfic server
+
+
+
+prvilaged users to scan targets outside the local network namp uses:
 									ICMP echo
 									TCP ACK to port 80
 									TCP SYN to port 443
 									ICMP timestamp request
+
+
 #dowl a file 
        wget http://ip/filename
        curl http://ip/filname.sh
