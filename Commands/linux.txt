@@ -31,6 +31,28 @@ wget https://site.com | grep "< a href=\"http" | grep "site.com"
        nmap -PA21 (TCP ACK scan with specific port)
        nmap -PU (UDP scan)   
        nmap -sT // tcp connect scan
+       namp -sS // tcp syn scan
+       nmap -sU // udp scan
+       nmap -sN // null scan
+       nmap -sX // xmas scan
+       nmap -sF // fin scan
+       nmap -sM // TCP  maimon scan
+       nmap -sA // TCP ACK scan
+       nmap -sW // TCP window scan
+       nmap --scanflags CUSTOM_FLAGS //custom scan
+      nmap -S SPOOFED_IP // ip sppof
+      nmap --sppod-mac SPPOFED-MAC //mac spoof
+      nmap -D DECOY_IP // decoy source ip
+      nmap -sI ZOMBIE_IP // zombie/idle scan
+     -f // fragment ip data into 8 bytes
+     -ff // fragment ip data into 16 bytes
+      nmap -sV // service detection
+      nmap -O // OS detection
+      nmap -sC // using scripts
+      
+     
+
+
 
 reverse-DNS lookup
        namp -n //to skip
