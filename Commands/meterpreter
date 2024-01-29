@@ -68,3 +68,30 @@ webcam_snap: Takes a snapshot from the specified webcam
 webcam_stream: Plays a video stream from the specified webcam
 getsystem: Attempts to elevate your privilege to that of local system
 hashdump: Dumps the contents of the SAM database
+
+to run a session in background
+
+* background //inside meterpreter shell
+* sessions // to list all the sessions
+* set session 1 // to use the session for exploit
+* session -i 1 // to use the particular session shell
+
+privilage escalation
+
+GetSystem
+
+to make use of GetSystem need to load 'priv' extension
+
+* use priv
+running GetSystem with -h display all the available options
+
+* GetSystem // our sessiion will run with SYSTEM privilages
+
+some cases GetSystem fails
+use local exploits such as
+
+exploit/windows/local/
+exploit/windows/local/ms10_015_kitrap0d
+
+
+

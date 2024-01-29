@@ -66,3 +66,5 @@ Find-DomainShare = will list available shares.
 Get-NetGPO =  command will gather information on enforced policies. 
 Get-NetDomainTrust =  command will list any domain you may access
 
+
+dir *flag*.txt /s //to find a file
