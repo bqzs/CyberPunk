@@ -1,0 +1,47 @@
+  * How to pull docker image: docker pull imagename
+
+
+  * docker images // to find images on the machine
+
+  * docker tag imageid dockerhub_username/repo:tag(sample name)// to tag the image
+  * docker push dockerhub_username/repo:tag //to push iamge to dockerhub
+
+
+  * Docker build -t imagename .   // to bulid the image. Check docker desktop and run the image  and visit the url. Using of the same imageid occurs when content of the Dockerfile is not changed. It also uses an cache deploy mechanism to speed up the build process. We can use --no-cache flag to get new image id for each build 
+
+
+   * Docker images // list the images
+   * Docker ps -a  // to list the container
+
+   * Docker exec -it <containerid> /bin/sh // to get a iterative shell to specific docker container
+   * docker run --name docker-nginx -p 80:80 nginx // to run a sample nginx server
+
+   * Docker run -it  -v <foldername>:<folderthehost> imagename sh
+
+   *  Docker run -it -e USERNAME= *** -e PASSWORD= ***  <imagename> sh
+
+   *  Docker inspect <containerid> // to inspect the container
+
+   * docker run -d -p 5000:5000 --restart=always --name registry registry:2
+   * docker tag hysnsec/vulregistry localhost:5000/secret:1.0
+   * docker push localhost:5000/secret:1.0                               //  to create a local docker registry
+
+
+
+    * docker run -d --name db arminc/clair-db:latest // to run conatainer scan using clair
+
+
+Namespaces created for a container are noot visible to ther containers in the system
+
+     * docker run --rm -it --pids-limit 2 alpine sh // --pids-limit used to limit the number of process inside a container
+
+      * docker inspect --format='{{.HostConfig.Privileged}}' <container id> // to check whether a contianer is privilaged or not
+
+      * mkdir /hostroot && mount /dev/sda1 /hostroot && cd /hostroot
+
+      * docker run -it -v /var/run/docker.sock:/var/run/docker.sock ubuntu:latest sh // mount the docker to the ubuntu container, which result in having the ubuntu root to do anything to all the conatiner in the host.
+
+       * Docker search --filter=is-official=true nginx // to check the offical image
+       * Docker history --no-trunc -H --format="{{.CreateAt}} | {{.CreatedBy}} " nginx // to know the command used to build the image
+
+
