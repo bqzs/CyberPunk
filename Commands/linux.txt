@@ -3,6 +3,8 @@ Netdiscover  #ip amd mac of devices connected to the network
 uncover -q “target.com” -e censys,fofa,shodan,shodan-idb | httpx | tee ips.txt
 wget https://site.com | grep "< a href=\"http" | grep "site.com"
 
+____________________________________________________________________
+
 #port enumeration (-f:to run fatser,  T4 run faster) 
 
  	     nmap -p-  #all port
