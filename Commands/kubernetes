@@ -1,0 +1,109 @@
+Kubectl
+
+kubectl get pods -A
+
+kubectl get nodes
+
+ kubectl get namespace
+
+Kubectl get services
+
+Kubectl get deployments
+
+Kubectl get pod
+
+Kubectl logs -f <pod-name>
+
+Kubectl get service 
+
+kubectl get ns
+
+kubectl apply -f <filename>
+
+Kubernetes also known as K8s, is an Open-source system for automating deployment, scaling , and management of  containerized applications.
+
+ cluster is a group of nodes which is used to run containerized applications.
+
+ Node is a physical computer or vm that act as a worker machine . Each node has a kubeclt which act as a agent for managing node and communicating with the k8s control panel.
+
+Pod is used to represent the running containers in the cluster.
+
+Cluster contains at least one master node and 1 working node or many working nodes.
+Working nodes are where pods are running, pods  basically contain one  containers that are used to run services. Each pod gets its own IP . Each working nodes contain a kubectl which is a k8s process that is used for the cluster to communicate with each other.
+
+Master node contains several important k8s process :
+
+1 Api server : entry point to the k8s cluster. 
+2 controller manager :  keeps an over view of what happening in the cluster
+3 scheduler :  scheduling different containers on nodes based on the working load of each node
+4 etcd  :  stores the configuration data of the k8s cluster. 
+
+Service :  Setting up a static Ip address for the pod. Life cycle of the pod and service are not connected
+ external service is a service that open communication from external sources (accessing web application via browser). Pods communicate with each other using the service.
+
+ Ingress : route traffic into the cluster
+
+Config-map : external configuration of application. Basically contains configuration data like URL of database or some other service.
+
+Secret : Same as config map but it stores confidential data in base64 format
+
+Volume : used to store the database data or log . These volume are either located locally means on the server node or remotely means outside the k8s cluster.
+
+Deployment : blueprint for application pods. Which create another replica of the application pod with the same service ip.  Service act as a load balancer  
+
+Statefulset : for creating stateful database . For cloning databases 
+
+Configurations for creating components inside the cluster
+
+Deployment  = a template or creating pods
+
+Each configuration file has three parts 
+
+	1. Metadata :  name of the component/ name
+	2. Specification spec  :   replicas/selector/ports
+	3. Status : automatically added and edited by the k8s. Information is coming from etcd
+
+Minikube : where master process and worker process run in the same node (test purpose) and also contain a  pre-installed docker to run the container.
+Mnikube can only run as a container or vm in our local system
+ minkube start --driver docker
+
+ kubectl is a command line tool that helps to communicate with api server inside the k8s cluster
+
+Config-map configuration
+
+Kind = ConfigMap
+Name = an arbitrary-name
+Data = key: value pair
+
+
+Secret configuration
+
+Kind = secret
+Name = an arbitrary name
+Type = default opaque 
+Data = key value pairs
+
+Deployment configuration { main part is the blueprint for the nodes}
+
+Kind - deployment
+Template - configuration for pod
+Template is basically a configuration inside the configuration of the deployment. It has its own metadata and specification. Specs is used for the configuring the pod. 
+  -containers:
+      -name : an arbitaryname
+       image :  image name
+        ports: 
+          -containerport :  where our image will listen
+
+Service configuration
+
+Kind =  service
+Name = an arbitary name
+Selector = select pods to forward the requests to
+-ports
+    -port :  service port (8080)
+     targetport = same as container port
+
+
+ 
+
+
