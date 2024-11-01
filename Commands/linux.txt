@@ -244,3 +244,8 @@ SOA	Start of Authority
 TXT	TXT Records
 
 
+
+
+#to check whether an github token is vald or not 
+curl -H “Authorization: token $GH_TOKEN” -H “Accept: application/vnd.github.v3+json” https://api.github.com/user
+
